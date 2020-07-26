@@ -15,22 +15,16 @@ class MaoyanmovieSpider(scrapy.Spider):
         yield scrapy.Request(url=url, callback=self.parse, headers=header)
 
     def parse(self, response):
-        print('****************************')
-        print(response.text)
+        # print(response.text)
         movies = Selector(response=response).xpath('//div[@class="movie-item-hover"]')
+        
         for movie in movies:
             item = MaoyanItem()
             title = movie.xpath('./a/div/div[1]/span[1]/text()')
             item['title'] = title
-            print('-----------')
-            print(title)
             film_type = movie.xpath('./a/div/div[2]/text()')
             item['film_type'] = film_type
-            print('-----------')
-            print(film_type)
             film_time = movie.xpath('./a/div/div[4]/text()')
             item['film_time'] = film_time
-            print('-----------')
-            print(film_time)
             yield item
 
