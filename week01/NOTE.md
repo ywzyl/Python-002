@@ -1,1 +1,4 @@
 学习笔记
+1，根据模仿老师视频中的代码，完成作业。对scrapy的整个流程有更深刻的认识，比如从爬虫到pipelines中进行处理，除了要在settings中进行配置ITEM_PIPELINES，还要在爬虫中实例化items.py中定义的对象，这样才能赋值到pipelines中。
+2，爬虫运行时，会先执行spider里的start_requests()方法，如果这个方法为空，就会取start_urls的网址发送第一个请求，把返回的结果放到response里面。如果不为空，会优先执行。类似于pytest里的setup.py。
+3，在设置cookie时，有多种方式可以选择，但是仍存在被目标网站限制的可能，不方便脚本的调试，后续再深入了解解决方法。同时vscode中scrapy的调试，感觉用起来没pycharm方便。
